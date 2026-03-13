@@ -23,13 +23,9 @@
       --maxw: 1100px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -44,18 +40,14 @@
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    a:hover { text-decoration: underline; }
 
     .container {
       width: min(92%, var(--maxw));
       margin: 0 auto;
     }
 
-    .nav {
-      padding: 20px 0;
-    }
+    .nav { padding: 20px 0; }
 
     .nav-inner {
       display: flex;
@@ -73,10 +65,6 @@
       color: var(--accent);
     }
 
-    .brand svg {
-      flex-shrink: 0;
-    }
-
     .nav-links {
       display: flex;
       gap: 20px;
@@ -88,9 +76,7 @@
       font-weight: 500;
     }
 
-    .hero {
-      padding: 36px 0 48px;
-    }
+    .hero { padding: 36px 0 48px; }
 
     .hero-card {
       background: rgba(255, 255, 255, 0.82);
@@ -101,12 +87,9 @@
       overflow: hidden;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 0;
     }
 
-    .hero-copy {
-      padding: 56px 48px;
-    }
+    .hero-copy { padding: 56px 48px; }
 
     .eyebrow {
       display: inline-block;
@@ -200,7 +183,6 @@
       border-radius: 24px;
       padding: 20px 16px 18px;
       min-height: 500px;
-      position: relative;
       overflow: hidden;
     }
 
@@ -263,9 +245,7 @@
       background: linear-gradient(90deg, #2563eb, #38bdf8);
     }
 
-    section {
-      padding: 28px 0;
-    }
+    section { padding: 28px 0; }
 
     .section-header {
       margin-bottom: 22px;
@@ -382,16 +362,11 @@
       }
     }
   </style>
-
-  <script data-goatcounter="https://inugoya.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
 </head>
 <body>
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <!-- Main logo -->
         <svg width="34" height="34" viewBox="0 0 64 64" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="64" y2="64">
@@ -409,6 +384,7 @@
 
       <nav class="nav-links">
         <a href="#features">Features</a>
+        <a href="learn.html">Learn</a>
         <a href="#support">Support</a>
         <a href="#privacy">Privacy</a>
       </nav>
@@ -428,7 +404,7 @@
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#support">Contact Support</a>
-              <a class="btn btn-secondary" href="#privacy">Privacy Information</a>
+              <a class="btn btn-secondary" href="learn.html">Learn the science</a>
             </div>
           </div>
 
@@ -530,6 +506,25 @@
       </div>
     </section>
 
+    <section>
+      <div class="container">
+        <div class="panel">
+          <h3>Grounded in interoception research</h3>
+          <p>
+            InteroHR is inspired by scientific work on interoception — the brain’s ability to sense signals
+            from inside the body, such as heart rate, breathing, and internal arousal.
+          </p>
+          <p style="margin-top:10px;">
+            The app is not a medical tool. It is a structured way to explore heart-rate perception, calibration,
+            and regulation through repeated practice.
+          </p>
+          <p style="margin-top:14px;">
+            <a href="learn.html">Read the Science Behind InteroHR →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section id="support">
       <div class="container">
         <div class="split">
@@ -573,7 +568,8 @@
           Heart rate awareness training for iPhone
         </div>
         <div>
-          Contact: <a href="mailto:support@interohr.com">support@interohr.com</a>
+          <a href="learn.html">Learn</a> ·
+          <a href="mailto:support@interohr.com">support@interohr.com</a>
         </div>
       </div>
     </div>
