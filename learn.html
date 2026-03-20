@@ -3,57 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Science Behind InteroHR</title>
-  <meta
-    name="description"
-    content="Learn about the science behind InteroHR, including interoception, heart-rate awareness, and research on internal signal perception."
-  />
+  <title>Learn — InteroHR</title>
+  <meta name="description" content="Learn how InteroHR helps you build interoceptive awareness through pulse checks, recovery practice, and meaningful insights." />
   <style>
     :root {
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #5b6472;
-      --line: #e5e7eb;
-      --accent: #0f172a;
-      --accent-soft: #eaf1ff;
-      --blue: #2563eb;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --radius: 22px;
-      --maxw: 980px;
+      --bg: #f4f8f9;
+      --surface: rgba(255,255,255,0.84);
+      --surface-strong: #ffffff;
+      --text: #0d2238;
+      --muted: #5e7082;
+      --line: rgba(13,34,56,0.08);
+      --navy: #0c2d4f;
+      --blue: #1f6fff;
+      --cyan: #24c8ff;
+      --teal: #39d1bb;
+      --lime: #d9f26b;
+      --shadow: 0 18px 40px rgba(12, 45, 79, 0.10);
+      --shadow-strong: 0 30px 70px rgba(8, 31, 57, 0.18);
+      --radius: 28px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, #f8fbff 0%, #f7f9fc 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      line-height: 1.75;
+      background:
+        radial-gradient(circle at top left, rgba(36,200,255,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(57,209,187,0.10), transparent 24%),
+        linear-gradient(180deg, #f8fbfc 0%, #eef4f5 100%);
     }
 
-    a {
-      color: var(--blue);
-      text-decoration: none;
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(248, 251, 252, 0.74);
+      border-bottom: 1px solid rgba(13,34,56,0.06);
     }
 
-    a:hover { text-decoration: underline; }
-
-    .container {
-      width: min(92%, var(--maxw));
-      margin: 0 auto;
-    }
-
-    .nav { padding: 20px 0; }
-
-    .nav-inner {
+    .nav {
+      min-height: 78px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .brand {
@@ -61,395 +62,728 @@
       align-items: center;
       gap: 12px;
       font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--accent);
+    }
+
+    .brand img.icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(31,111,255,0.20);
+    }
+
+    .brand img.wordmark {
+      height: 24px;
+      width: auto;
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 24px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.96rem;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-weight: 500;
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+
+    .cta:hover { transform: translateY(-1px); }
+
+    .cta-primary {
+      color: white;
+      background: linear-gradient(135deg, #27c8ff 0%, #22c5d2 45%, #1f6fff 100%);
+      box-shadow: 0 16px 32px rgba(31,111,255,0.22);
+    }
+
+    .cta-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(13,34,56,0.08);
     }
 
     .hero {
-      padding: 28px 0 20px;
+      padding: 84px 0 42px;
     }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(229, 231, 235, 0.8);
-      box-shadow: var(--shadow);
-      border-radius: 28px;
-      padding: 40px 32px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 40px;
+      align-items: center;
     }
 
     .eyebrow {
-      display: inline-block;
-      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--blue);
-      font-size: 0.85rem;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(13,34,56,0.08);
+      color: #32506b;
       font-weight: 700;
-      margin-bottom: 16px;
+      font-size: 0.92rem;
+      box-shadow: var(--shadow);
     }
 
     h1 {
-      font-size: clamp(2rem, 4vw, 3.3rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin: 0 0 16px;
-      color: var(--accent);
+      margin: 18px 0 16px;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
     }
 
-    .hero-card p {
-      font-size: 1.06rem;
-      color: var(--muted);
+    .hero p {
       margin: 0;
-      max-width: 62ch;
+      font-size: 1.14rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 58ch;
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 22px;
+      gap: 14px;
+      margin-top: 28px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 18px;
-      border-radius: 14px;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.92;
-      text-decoration: none;
-    }
-
-    .btn-secondary {
-      background: white;
-      color: var(--accent);
-      border-color: var(--line);
-    }
-
-    .btn-secondary:hover {
-      background: #fafafa;
-      text-decoration: none;
-    }
-
-    main { padding: 20px 0 50px; }
-
-    .science-layout {
+    .hero-points {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
     }
 
-    .panel {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
+    .point {
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(13,34,56,0.08);
       box-shadow: var(--shadow);
     }
 
-    .panel h2 {
+    .point strong { display: block; margin-bottom: 6px; }
+    .point span { color: var(--muted); line-height: 1.55; font-size: 0.96rem; }
+
+    .hero-visual {
+      position: relative;
+      padding: 28px;
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(8, 41, 71, 0.98) 0%, rgba(12, 45, 79, 0.96) 100%);
+      box-shadow: var(--shadow-strong);
+      overflow: hidden;
+      min-height: 640px;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      left: -60px;
+      top: -50px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(36,200,255,0.26), transparent 70%);
+      filter: blur(8px);
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: 90px;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(217,242,107,0.18), transparent 68%);
+      filter: blur(16px);
+    }
+
+    .visual-stack {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 580px;
+    }
+
+    .card-shot {
+      position: absolute;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 24px 54px rgba(0,0,0,0.26);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(4px);
+    }
+
+    .shot-main {
+      width: min(100%, 320px);
+      transform: rotate(-2deg);
+      z-index: 3;
+    }
+
+    .shot-left {
+      width: 180px;
+      left: 0;
+      bottom: 34px;
+      transform: rotate(-8deg);
+      z-index: 1;
+    }
+
+    .shot-right {
+      width: 185px;
+      right: 0;
+      top: 34px;
+      transform: rotate(8deg);
+      z-index: 2;
+    }
+
+    .logo-float {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 90px;
+      filter: drop-shadow(0 16px 30px rgba(36,200,255,0.26));
+      z-index: 4;
+    }
+
+    section {
+      padding: 36px 0;
+    }
+
+    .section-title {
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .section-title .eyebrow { margin-bottom: 14px; }
+
+    h2 {
       margin: 0 0 12px;
-      font-size: 1.45rem;
-      letter-spacing: -0.02em;
-      color: var(--accent);
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
     }
 
-    .panel p {
-      margin: 0 0 14px;
+    .section-title p {
+      margin: 0;
       color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.06rem;
     }
 
-    .panel p:last-child {
-      margin-bottom: 0;
+    .grid-3,
+    .grid-2,
+    .grid-4 {
+      display: grid;
+      gap: 20px;
     }
 
-    .callout {
-      background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
-      border: 1px solid #dbeafe;
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .panel {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(13,34,56,0.08);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      margin: 0 0 10px;
+      font-size: 1.28rem;
+      letter-spacing: -0.02em;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      font-size: 1.2rem;
+      color: white;
+      background: linear-gradient(135deg, rgba(36,200,255,1), rgba(31,111,255,1));
+      box-shadow: 0 16px 26px rgba(31,111,255,0.18);
+    }
+
+    .science {
+      padding-top: 54px;
+    }
+
+    .science-band {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(10,41,71,0.98), rgba(15,57,98,0.96));
+      color: white;
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .science-band::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -120px -80px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(36,200,255,0.30), transparent 72%);
+    }
+
+    .science-band::after {
+      content: "";
+      position: absolute;
+      inset: -100px -40px auto auto;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(217,242,107,0.22), transparent 70%);
+    }
+
+    .science-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 26px;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .science-copy h2,
+    .science-copy p,
+    .science-copy li { color: white; }
+
+    .science-copy p,
+    .science-copy li {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .science-bullets {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .science-bullet {
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .science-shot {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 24px 54px rgba(0,0,0,0.24);
     }
 
     .quote {
-      font-size: 1.15rem;
+      margin-top: 16px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.74);
+      color: #23425d;
+      border: 1px solid rgba(13,34,56,0.08);
+      box-shadow: var(--shadow);
+      font-weight: 600;
       line-height: 1.7;
-      color: var(--accent);
-      margin: 0;
     }
 
-    .research-list {
+    .screens-grid {
       display: grid;
-      gap: 14px;
-      margin-top: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .research-item {
-      padding: 16px 18px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: #fafcff;
+    .screen-card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(13,34,56,0.08);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: var(--shadow);
     }
 
-    .research-item strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
+    .screen-card img {
+      border-radius: 22px;
+      margin-bottom: 14px;
     }
 
-    footer {
-      padding: 12px 0 40px;
+    .screen-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .screen-card p {
+      margin: 0;
       color: var(--muted);
-      font-size: 0.95rem;
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    .footer {
+      padding: 50px 0 70px;
     }
 
     .footer-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 20px 22px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 24px;
+      padding: 28px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(13,34,56,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-brand img.logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      box-shadow: 0 14px 32px rgba(31,111,255,0.18);
+    }
+
+    .footer-brand img.wordmark {
+      height: 30px;
+      width: auto;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 46ch;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .science-grid,
+      .grid-3,
+      .grid-4,
+      .screens-grid,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav { flex-wrap: wrap; padding: 12px 0; }
+      .nav-links { order: 3; width: 100%; justify-content: center; }
+      .hero-visual { min-height: 560px; }
+      .shot-left,
+      .shot-right { width: 150px; }
+      .footer-card { flex-direction: column; align-items: flex-start; }
     }
 
     @media (max-width: 640px) {
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        gap: 14px;
-      }
-
-      .hero-card {
-        padding: 30px 22px;
-      }
-
-      .panel {
-        padding: 22px;
-      }
+      .wrap { width: min(var(--max), calc(100% - 20px)); }
+      .hero { padding-top: 56px; }
+      h1 { max-width: none; }
+      .hero-points { grid-template-columns: 1fr; }
+      .hero-visual { padding: 20px; min-height: 500px; }
+      .visual-stack { min-height: 460px; }
+      .shot-main { width: min(100%, 270px); }
+      .shot-left,
+      .shot-right { display: none; }
+      .science-band { padding: 24px; }
     }
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <svg width="34" height="34" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="64" y2="64">
-              <stop offset="0%" stop-color="#2563eb"></stop>
-              <stop offset="100%" stop-color="#38bdf8"></stop>
-            </linearGradient>
-          </defs>
-          <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#g1)"></rect>
-          <path d="M18 35c5-10 9-10 14 0s9 10 14 0" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M32 18v28" stroke="white" stroke-width="4.5" stroke-linecap="round"></path>
-          <circle cx="32" cy="18" r="4.5" fill="white"></circle>
-        </svg>
-        <span>InteroHR</span>
-      </div>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img class="icon" src="AppIcon 256x256 Transparent.png" alt="InteroHR app icon" />
+        <img class="wordmark" src="InteroHR Word only.png" alt="InteroHR" />
+      </a>
 
       <nav class="nav-links">
         <a href="index.html">Home</a>
-        <a href="learn.html">Learn</a>
-        <a href="index.html#support">Support</a>
-        <a href="index.html#privacy">Privacy</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#science">Science</a>
+        <a href="#screens">Screens</a>
+        <a class="active" href="Learn.html">Learn</a>
       </nav>
+
+      <a class="cta cta-primary" href="mailto:hello@example.com?subject=InteroHR%20Early%20Access">Get Early Access</a>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-card">
-        <div class="eyebrow">Science behind the app</div>
-        <h1>The Science Behind InteroHR</h1>
-        <p>
-          InteroHR is inspired by research on interoception — the brain’s ability to sense signals
-          from inside the body, such as heartbeats, breathing, and internal arousal.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="index.html">Back to home</a>
-          <a class="btn btn-secondary" href="mailto:support@interohr.com">Contact support</a>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">InteroHR Learn</div>
+          <h1>Build awareness you can actually feel.</h1>
+          <p>
+            InteroHR is designed to help people better notice, estimate, and regulate internal body signals.
+            Instead of guessing whether you are calm, activated, or recovering well, the app gives you a structured way
+            to practice awareness and see how it changes over time.
+          </p>
+
+          <div class="hero-actions">
+            <a class="cta cta-primary" href="index.html">Back to Landing Page</a>
+            <a class="cta cta-secondary" href="#science">See the Science</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="point">
+              <strong>Pulse Check</strong>
+              <span>Estimate your heart rate and compare your perception with the actual number.</span>
+            </div>
+            <div class="point">
+              <strong>Recovery Challenge</strong>
+              <span>Practice downshifting your system and learn how your body responds under different conditions.</span>
+            </div>
+            <div class="point">
+              <strong>Insights</strong>
+              <span>See trends in calibration, bias, consistency, and context over time.</span>
+            </div>
+            <div class="point">
+              <strong>Daily Training</strong>
+              <span>Turn self-awareness into a repeatable skill instead of a vague idea.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img class="logo-float" src="AppIcon 512x512 Transparent.png" alt="InteroHR logo" />
+          <div class="visual-stack">
+            <div class="card-shot shot-left">
+              <img src="F5823B2E-5A86-42C5-9D31-684C0F63094F.jpeg" alt="InteroHR home screen" />
+            </div>
+            <div class="card-shot shot-right">
+              <img src="E346F7E2-A958-4DF5-9581-07762C181C9E.jpeg" alt="InteroHR insights screen" />
+            </div>
+            <div class="card-shot shot-main">
+              <img src="BB4EEDA2-1B24-4DE4-ABF4-F132D135C98A.jpeg" alt="InteroHR index screen" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <main>
-    <div class="container science-layout">
-      <section class="panel">
-        <h2>Listening to the body</h2>
-        <p>
-          Every moment, the brain receives signals from inside the body — heartbeats, breathing rhythms,
-          muscle tension, and subtle shifts in internal state. The ability to perceive these signals is called
-          <strong>interoception</strong>.
-        </p>
-        <p>
-          Interoception is sometimes described as the brain’s internal sensing system. It helps us detect
-          whether we are calm or stressed, energized or fatigued, focused or overwhelmed. These signals shape
-          how we feel, how we interpret emotion, and how we respond to challenge.
-        </p>
-        <p>
-          Most of this sensing happens automatically. But research suggests that people differ in how accurately
-          they perceive their own internal signals.
-        </p>
-      </section>
+    <section id="how-it-works">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">How it works</div>
+          <h2>Train perception, regulation, and reflection together.</h2>
+          <p>
+            InteroHR is not just a heart-rate display. It is a practice system. The experience combines body awareness,
+            objective feedback, and pattern tracking so the user can gradually improve how accurately they sense internal state.
+          </p>
+        </div>
 
-      <section class="panel">
-        <h2>How interoception is studied</h2>
-        <p>
-          Scientists often study interoception using tasks that ask participants to estimate their own heartbeats
-          without feeling their pulse or using a device. After a short interval, the participant reports how many
-          beats they perceived, and that estimate is compared with the measured heart rate.
-        </p>
-        <p>
-          These experiments allow researchers to quantify <strong>interoceptive accuracy</strong> — how closely a person’s
-          perception matches the physiological signal. Some people show strong alignment. Others show much less.
-        </p>
-      </section>
-
-      <section class="panel">
-        <h2>Why it matters</h2>
-        <p>
-          Interoception appears to play a role in emotional awareness, stress regulation, and decision making
-          under uncertainty. In daily life, internal signals can shape whether we interpret a situation as manageable,
-          threatening, energizing, or exhausting.
-        </p>
-        <p>
-          A body that feels legible from the inside may support clearer self-regulation. A body that feels noisy,
-          vague, or misleading can make interpretation harder. The science is still evolving, but the basic question
-          is a fascinating one: how much do internal signals help guide thought and behavior?
-        </p>
-      </section>
-
-      <section class="panel callout">
-        <p class="quote">
-          Instead of only asking what sensors detect, interoception asks a quieter question:
-          <strong>what does the body feel like from the inside?</strong>
-        </p>
-      </section>
-
-      <section class="panel">
-        <h2>Can interoception improve?</h2>
-        <p>
-          Researchers are still exploring this. Some studies suggest that repeated attention to internal signals,
-          especially when paired with structured feedback, may improve interoceptive accuracy in certain contexts.
-        </p>
-        <p>
-          At the same time, the field is nuanced. Different studies use different measurement methods, and the
-          relationship between interoception, performance, emotion, and regulation is not always simple.
-        </p>
-        <p>
-          InteroHR takes a practical stance: rather than treating interoception as a fixed trait, it treats it as
-          something worth observing, practicing, and understanding over time.
-        </p>
-      </section>
-
-      <section class="panel">
-        <h2>How InteroHR fits in</h2>
-        <p>
-          InteroHR is designed as a simple tool for exploring heart-rate awareness. The app invites users to estimate
-          their heart rate under different conditions, compare perception with measured data, and observe how accuracy
-          and regulation shift over time.
-        </p>
-        <p>
-          The goal is not perfection. The goal is awareness.
-        </p>
-        <p>
-          With repeated observation, the relationship between physiology and perception may become easier to recognize.
-        </p>
-      </section>
-
-      <section class="panel">
-        <h2>A note on interpretation</h2>
-        <p>
-          Interoception remains an active area of research, and scientists continue to debate the best ways to measure
-          and interpret it.
-        </p>
-        <p>
-          InteroHR is not a medical tool and does not diagnose or treat any condition. It is a structured way to observe
-          heart-rate perception and reflect on patterns over time.
-        </p>
-        <p>
-          Think of it as a personal instrument for exploring the signals of your own body.
-        </p>
-      </section>
-
-      <section class="panel">
-        <h2>Selected research</h2>
-        <div class="research-list">
-          <div class="research-item">
-            <strong>Kandasamy, N., et al. (2016)</strong>
-            Interoceptive ability predicts survival on a London trading floor.
+        <div class="grid-3">
+          <div class="panel">
+            <div class="feature-icon">01</div>
+            <h3>Notice</h3>
+            <p>
+              Start by pausing and checking in. Instead of relying on the screen immediately, the user first pays attention to
+              internal cues such as rhythm, arousal, steadiness, and bodily tension.
+            </p>
           </div>
-          <div class="research-item">
-            <strong>Garfinkel, S. N., et al. (2015)</strong>
-            Knowing your own heart: distinguishing interoceptive accuracy, awareness, and sensibility.
+
+          <div class="panel">
+            <div class="feature-icon">02</div>
+            <h3>Compare</h3>
+            <p>
+              The app compares the estimate with a live or recorded heart-rate value. This creates a clear feedback loop that helps
+              the brain recalibrate over repeated sessions.
+            </p>
           </div>
-          <div class="research-item">
-            <strong>Pollatos and colleagues</strong>
-            Research linking interoceptive processes with decision making and emotional awareness.
-          </div>
-          <div class="research-item">
-            <strong>Sugawara, A., et al. (2020)</strong>
-            Experimental work exploring how interoceptive training may affect decision processes.
+
+          <div class="panel">
+            <div class="feature-icon">03</div>
+            <h3>Improve</h3>
+            <p>
+              Over time, users can identify trends such as underestimating, overestimating, stronger contexts, weaker contexts,
+              and whether recovery ability is building in a meaningful way.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="panel">
-        <h2>A final thought</h2>
-        <p>
-          Modern technology measures our bodies constantly — steps, sleep, heart rate, activity.
-        </p>
-        <p>
-          Interoception turns the lens inward.
-        </p>
-        <p>
-          Instead of relying only on external sensors, it asks how accurately we can sense our own internal state.
-          InteroHR is simply a tool to help explore that question.
-        </p>
-      </section>
-    </div>
+    <section>
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">What you are training</div>
+          <h2>Four core dimensions of body awareness.</h2>
+          <p>
+            The app language on the Insights and Index screens maps practice into practical signals that are easier to understand than raw numbers alone.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <div class="panel">
+            <h3>Calibration</h3>
+            <p>How close your estimate is to what your body was actually doing.</p>
+          </div>
+          <div class="panel">
+            <h3>Bias</h3>
+            <p>Whether you tend to underestimate or overestimate your internal state.</p>
+          </div>
+          <div class="panel">
+            <h3>Consistency</h3>
+            <p>Whether your awareness is stable from session to session rather than random.</p>
+          </div>
+          <div class="panel">
+            <h3>Context Coverage</h3>
+            <p>Whether your skill holds up across resting, stress, caffeine, exercise, and other contexts.</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          Strong interoception is not just “feeling your body.” It is the ability to notice internal signals, interpret them accurately,
+          and respond with more control.
+        </div>
+      </div>
+    </section>
+
+    <section id="science" class="science">
+      <div class="wrap">
+        <div class="science-band">
+          <div class="science-grid">
+            <div class="science-copy">
+              <div class="eyebrow">Science behind InteroHR</div>
+              <h2>Why interoception matters.</h2>
+              <p>
+                Interoception is often described as the sense of the internal state of the body. It influences emotional awareness,
+                self-regulation, stress response, and how people interpret signals like effort, activation, calmness, and recovery.
+              </p>
+              <div class="science-bullets">
+                <div class="science-bullet">Better awareness can support more accurate self-monitoring.</div>
+                <div class="science-bullet">Practice with feedback may improve calibration over time.</div>
+                <div class="science-bullet">Recovery-focused practice can help users build regulation habits, not just collect data.</div>
+              </div>
+            </div>
+
+            <div class="science-shot">
+              <img src="6FBC9F46-6DCF-49C4-AF57-3240B7E6FDEF.jpeg" alt="InteroHR pulse check results screen" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">Two main training modes</div>
+          <h2>One for awareness, one for downshifting.</h2>
+          <p>
+            The current app experience teaches both perception and regulation, which work best when practiced together.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h3>Pulse Check</h3>
+            <p>
+              Pulse Check asks a simple but powerful question: how well can you estimate your own heart rate without relying on the screen first?
+              That repeated comparison helps strengthen internal calibration.
+            </p>
+            <ul>
+              <li>Choose a context such as resting or another condition.</li>
+              <li>Estimate first, then compare against actual heart rate.</li>
+              <li>Save the entry and let the app build your pattern over time.</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Recovery Challenge</h3>
+            <p>
+              Recovery Challenge shifts from perception to regulation. The goal is not to chase a perfect score, but to practice how quickly and steadily
+              you can bring your system back down after activation.
+            </p>
+            <ul>
+              <li>Set a drop target and duration.</li>
+              <li>Use breathing or other calming strategies.</li>
+              <li>Review whether recovery is getting stronger over time.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">Inside the product</div>
+          <h2>Branded screens that match the app experience.</h2>
+          <p>
+            These screenshots can also be reused throughout the site to keep the website and app visually aligned.
+          </p>
+        </div>
+
+        <div class="screens-grid">
+          <div class="screen-card">
+            <img src="F5823B2E-5A86-42C5-9D31-684C0F63094F.jpeg" alt="InteroHR home screen" />
+            <h3>Home</h3>
+            <p>Clear, focused entry points for Pulse Check and Recovery Challenge with a calm branded feel.</p>
+          </div>
+          <div class="screen-card">
+            <img src="E346F7E2-A958-4DF5-9581-07762C181C9E.jpeg" alt="InteroHR insights screen" />
+            <h3>Insights</h3>
+            <p>Simple summaries help users understand their strongest contexts, bias pattern, and confidence level.</p>
+          </div>
+          <div class="screen-card">
+            <img src="BB4EEDA2-1B24-4DE4-ABF4-F132D135C98A.jpeg" alt="InteroHR interoceptive index screen" />
+            <h3>Interoceptive Index</h3>
+            <p>A single headline score with supporting components makes progress intuitive and easy to explain.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <div class="container">
+  <footer class="footer">
+    <div class="wrap">
       <div class="footer-card">
         <div>
-          <strong>InteroHR</strong><br />
-          Science, signal, and self-awareness
+          <div class="footer-brand">
+            <img class="logo" src="AppIcon 256x256 Transparent.png" alt="InteroHR logo" />
+            <img class="wordmark" src="InteroHR Word and Logo 1x.png" alt="InteroHR" />
+          </div>
+          <p class="footer-copy">
+            InteroHR brings together awareness, regulation, and insight in one branded experience.
+            Update your existing Learn page with this file and place the logo and screenshot assets in the same folder.
+          </p>
         </div>
-        <div>
-          <a href="index.html">Home</a> ·
-          <a href="mailto:support@interohr.com">support@interohr.com</a>
-        </div>
+        <a class="cta cta-primary" href="mailto:hello@example.com?subject=InteroHR%20Website%20Inquiry">Contact</a>
       </div>
     </div>
   </footer>
 </body>
 </html>
+
