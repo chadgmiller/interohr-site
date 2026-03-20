@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InteroHR | Learn</title>
+  <link rel="icon" type="image/png" sizes="1024x1024" href="AppIcon 1024x1024 Universal.png">
+  <link rel="apple-touch-icon" href="AppIcon 1024x1024 Universal.png">
   <style>
     :root {
       --screen-bg: #eef4f3;
       --screen-bg-2: #f7fbfa;
-      --card: rgba(255,255,255,0.92);
       --text: #102331;
       --muted: #617787;
       --teal: #27b8aa;
@@ -48,20 +49,15 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 20px;
+      min-width: 0;
     }
 
-    .brand .logo {
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 24px rgba(47,125,246,0.12));
-    }
-
-    .brand .wordmark {
-      height: 64px;
+    .brand .lockup {
+      height: 74px;
       width: auto;
       object-fit: contain;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 10px 24px rgba(47,125,246,0.10));
     }
 
     .nav {
@@ -94,7 +90,7 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.73));
       border: 1px solid rgba(255,255,255,0.76);
       border-radius: 40px;
-      box-shadow: 0 18px 45px rgba(23, 65, 84, 0.10);
+      box-shadow: var(--shadow);
     }
 
     .eyebrow {
@@ -122,7 +118,11 @@
       color: transparent;
     }
 
-    .hero p, .section p, .card p, .panel p, .panel li {
+    .hero p,
+    .section p,
+    .card p,
+    .panel p,
+    .panel li {
       color: var(--muted);
       line-height: 1.75;
     }
@@ -150,7 +150,7 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.68));
       border-radius: 36px;
       border: 1px solid rgba(255,255,255,0.72);
-      box-shadow: 0 18px 45px rgba(23, 65, 84, 0.10);
+      box-shadow: var(--shadow);
     }
 
     .section h2 {
@@ -170,7 +170,8 @@
       gap: 18px;
     }
 
-    .card, .panel {
+    .card,
+    .panel {
       padding: 24px;
       border-radius: 28px;
       background: rgba(255,255,255,0.92);
@@ -189,7 +190,8 @@
       margin-bottom: 12px;
     }
 
-    .card h3, .panel h3 {
+    .card h3,
+    .panel h3 {
       margin: 0 0 10px;
       font-size: 1.28rem;
       letter-spacing: -0.03em;
@@ -261,10 +263,14 @@
       padding: 24px 0 8px;
       color: #738592;
       font-size: 0.93rem;
+      line-height: 1.7;
     }
 
     @media (max-width: 1020px) {
-      .hero, .cards, .split, .gallery {
+      .hero,
+      .cards,
+      .split,
+      .gallery {
         grid-template-columns: 1fr;
       }
     }
@@ -272,9 +278,9 @@
     @media (max-width: 720px) {
       .shell { padding: 16px; }
       .topbar { flex-direction: column; align-items: flex-start; }
-      .brand .logo { width: 84px; height: 84px; }
-      .brand .wordmark { height: 52px; }
-      .hero, .section { padding: 24px; border-radius: 28px; }
+      .brand .lockup { height: 62px; }
+      .hero,
+      .section { padding: 24px; border-radius: 28px; }
     }
   </style>
 </head>
@@ -282,8 +288,7 @@
   <div class="shell">
     <header class="topbar">
       <a href="index.html" class="brand" aria-label="InteroHR home">
-        <img class="logo" src="AppIcon 512x512 Transparent.png" alt="InteroHR app logo">
-        <img class="wordmark" src="InteroHR Word only.png" alt="InteroHR wordmark">
+        <img class="lockup" src="InteroHR Word and Logo 1x.png" alt="InteroHR logo and wordmark">
       </a>
       <nav class="nav">
         <a href="index.html">Home</a>
@@ -366,6 +371,17 @@
     </section>
 
     <section class="section">
+      <h2>Requirements and important information</h2>
+      <p class="intro">
+        <strong>Requires a compatible Bluetooth-enabled heart rate device.</strong>
+        InteroHR uses live heart-rate input during training sessions, so a compatible device is needed.
+      </p>
+      <p>
+        InteroHR is designed for wellness, training, and self-awareness purposes only. It is not a medical device and is not intended to diagnose, treat, cure, monitor, or prevent any disease or medical condition. It does not provide medical advice, diagnosis, or treatment.
+      </p>
+    </section>
+
+    <section class="section">
       <h2>What it looks like</h2>
       <p class="intro">
         The interface is intentionally calm and lightweight so the focus stays on signal, reflection, and repeated practice.
@@ -379,7 +395,7 @@
     </section>
 
     <footer>
-      InteroHR is intended for training and self-awareness purposes only and is not medical advice.
+      Requires a compatible Bluetooth-enabled heart rate device. InteroHR is not a medical device and is intended for training and self-awareness purposes only. It does not provide medical advice, diagnosis, or treatment.
     </footer>
   </div>
 </body>
